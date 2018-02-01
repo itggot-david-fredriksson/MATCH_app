@@ -10,7 +10,10 @@ class App < Sinatra::Base
 		slim(:register)
 	end
 
-			
+	get('/home') do
+		slim(:home)
+	end
+
 
 	post('/register') do
 		db = SQLite3::Database.new('db/match.sqlite')
@@ -51,7 +54,7 @@ class App < Sinatra::Base
 		password_digest = result.first["password_digest"]
 		if BCrypt::Password.new(password_digest) == password
 			session[:user_id] = user_id
-			redirect('/notes')
+			redirect('/home')
 		else
 			set_error("Invalid Credentials")
 			redirect('/error')
