@@ -1,0 +1,523 @@
+body{                                                                   /*glöm inte screenshots för STILGUIDE på hur duu menar*/
+    background-color: black;
+    -webkit-font-smoothing: antialiased;                                /*smooth text*/
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sprite {
+    background: url(../img/spritesheet.png) no-repeat;
+    display: block;
+}
+
+.sprite-header {
+    width: 990px;
+    height: 200px;
+    background-position: -5px -5px;
+}
+
+.sprite-header:hover{
+    cursor: pointer;
+}
+
+.sprite-start_img {
+    width: 450px;
+    height: 350px;
+    background-position: -5px -215px;
+}
+
+.container{
+    background-color: white;
+    min-height: 900px;
+    max-width: 990px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.page_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.menu_text{
+    margin: 20px;                                                   /*ändra denna dvs ge denna menu stil och inte <a>, STILGUIDE*/
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.menu_text:hover{
+    opacity: 0.7;
+}
+
+#unselect{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#unselect:hover{
+    cursor: default;
+    opacity: 100;
+}
+
+.title_text{                                                        /*majoritet av texter ska vara indented då det sägs i STILGUIDEN*/
+    margin-left: 10px;                                              /*bla h2 ska ha egen stil, vanlig text ska ha egen stil osv..*/
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.image_n_sm{
+    display: flex;
+    flex-direction: column;
+}
+
+.social_media_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.social_media{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 30px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.lorem_text{
+    margin: 5px 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal_content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid white;
+    width: 80%;
+    height: 300px;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+input[type="submit"], .knapp{
+    background-color: black;
+    height: 36px;
+    width: 208px;
+    border: solid black 1px;
+    color: white;
+    margin: 10px;
+}
+
+input[type="submit"]:hover, .knapp:hover{
+    cursor: pointer;
+    opacity: 0.7;                                                   /*opacity*/
+}
+
+.footer_text{
+    margin: 5px;
+    font-size: 13px;                                                /*ha med i stilguide footer 13px*/
+}
+
+footer{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.formular_load_holder{
+    display: flex;
+    flex-direction: row;
+}
+
+#load{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/*tooltip*/
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    font-style: normal;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 2;
+    top: -5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border: 5px solid transparent;
+    border-right-color: black;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    cursor: help;
+}
+
+@media (max-width: 650px) and (max-height: 970px) {
+    html{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container{
+        min-height: 568px;
+        max-width: 400px;
+        width: 320px;
+        height: 568px;
+    }
+
+    .sprite-header{
+        width: 100%;
+    }
+
+    .sprite-start_img{
+        width: 100%;
+    }
+
+    .menu_text{
+        font-size: 15px;
+        margin: 15px;
+    }
+
+    .title_text{
+        font-size: 20px;
+        margin: 6px;
+    }
+
+    .fa {
+        padding: 5px;
+        font-size: 25px;
+        width: 15px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 30px 5px 30px;
+    }
+
+    .social_media{
+        align-items: center;
+    }
+
+    .vecation_text{
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    .sprite-start_img{
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    .iphone_header{
+        background: url("../img/header_iphone.png") no-repeat;
+    }
+
+    .header{
+        height: 65px;
+
+    }
+
+    footer{
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .modal_content{
+        width: 320px;
+        height: 568px;
+        padding: 0;
+        margin-top: -100px;
+    }
+
+    .close{
+        margin-right: 10px;
+    }
+
+    .modal_rubrik{
+        margin-left: 25px;
+    }
+
+    .modal_text{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    form{
+        margin-right: 25px;
+    }
+
+    .formular{
+        margin-left: 90px;
+    }
+
+    #knapp_modal{
+        margin-left: -40px;
+    }
+
+    #load{
+        margin-left: -35px;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 100px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 2;
+        top: -30px;
+        left: 110%;
+    }
+
+}
+
+@media (min-width: 650px) and (min-height: 970px) and (max-width: 770px) and (max-height: 1030px) {
+    html{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container{
+        min-height: 1024px;
+        max-width: 770px;
+        width: 768px;
+        height: 1024px;
+    }
+
+    .sprite-header{
+        width: 100%;
+    }
+
+    .sprite-start_img{
+        width: 100%;
+    }
+
+    .menu_text{
+        font-size: 30px;
+        margin: 15px;
+    }
+
+    .title_text{
+        font-size: 40px;
+        margin: 6px;
+    }
+
+    .fa {
+        padding: 15px;
+        font-size: 30px;
+        width: 25px;
+        text-align: center;
+        text-decoration: none;
+        margin: 10px;
+    }
+
+    .social_media{
+        align-items: center;
+    }
+
+    .vecation_text{
+        font-size: 35px;
+        margin: 5px;
+    }
+
+    .sprite-start_img{
+        width: 450px;
+        height: 250px;
+    }
+
+    .ipad_header{
+        background: url("../img/header_ipad.png") no-repeat;
+    }
+
+    .header{
+        height: 155px;
+    }
+
+    footer{
+        padding: 5px;
+    }
+
+    .footer_text{
+        font-size: 20px;
+    }
+
+    input[type="submit"], .knapp{
+        background-color: black;
+        height: 50px;
+        width: 300px;
+        border: solid black 1px;
+        color: white;
+        margin: 30px;
+        font-size: 23px;
+    }
+
+    .lorem_text{
+        font-size: 25px;
+    }
+
+    .modal_content{
+        width: 600px;
+        height: 680px;
+        padding: 0;
+    }
+
+    .close{
+        margin: 20px;
+    }
+
+    .modal_rubrik{
+        margin-left: 25px;
+        font-size: 35px;
+    }
+
+    .modal_text{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 25px;
+    }
+
+    form{
+        margin-left: 110px;
+        font-size: 25px;
+    }
+
+    .formular{
+        margin-left: 90px;
+    }
+
+    #knapp_modal{
+        margin-top: 20px;
+        margin-left: -50px;
+    }
+
+    #load{
+        margin-left: -25px;
+        margin-top: -20px;
+        margin-bottom: 25px;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 2;
+        top: -20px;
+        left: 110%;
+    }
+}
