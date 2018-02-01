@@ -15,8 +15,6 @@ class App < Sinatra::Base
 		slim(:home)
 	end
 
-	get()
-
 
 	post('/register') do
 		db = SQLite3::Database.new('db/match.sqlite')

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html, body{
     margin: 0;
     padding: 0;
@@ -42,8 +43,8 @@ body{
     box-shadow: #000;
 }
 
-}
-
-.home_container {
-    
+=======
+body {
+    background: lightblue;
+>>>>>>> parent of d23807d... login cleanup
 }
