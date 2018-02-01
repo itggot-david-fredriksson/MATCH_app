@@ -3,6 +3,7 @@ class App < Sinatra::Base
 	enable :sessions
 
 	get '/' do
+		session[:user_id] = ""
 		slim(:index)
 	end
 
@@ -13,6 +14,8 @@ class App < Sinatra::Base
 	get('/home') do
 		slim(:home)
 	end
+
+	get()
 
 
 	post('/register') do
