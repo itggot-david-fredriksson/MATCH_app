@@ -15,7 +15,11 @@ class App < Sinatra::Base
 		slim(:home)
 	end
 
-	get()
+	get('/upload') do
+	end
+	
+	get('/my_profile') do
+	end
 
 
 	post('/register') do
