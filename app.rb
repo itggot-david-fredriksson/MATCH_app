@@ -2,7 +2,7 @@ class App < Sinatra::Base
 	
 	enable :sessions
 
-	get '/' do
+	get ('/') do
 		session[:user_id] = ""
 		slim(:index)
 	end
@@ -16,6 +16,7 @@ class App < Sinatra::Base
 	end
 
 	get('/upload') do
+		slim(:upload)
 	end
 	
 	get('/my_profile') do
@@ -68,5 +69,15 @@ class App < Sinatra::Base
 		end
 	end
 
+
+	post('/upload/style') do
+		db = SQLite3::Database.new('db/match.sqlite')
+
+		user_id = session[:user_id].to_s
+		image = params["image"]
+		text = params["note"]
+
+		db.execute("INSERT INTO styles(user_id, image, text) VALUES (?,?,?)", [user_id, image, text])
+	end
 
 end
