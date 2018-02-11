@@ -1,4 +1,12 @@
-form action="/upload/style" method="POST"
-    input type="text" name="image" placeholder="Image"
+<div class="container">
+        <div class="page">
+            <div class="menu">
+                <a class="menu_text" href="/home">Home |</a>
+                <a class="menu_text" href="/upload"> Upload |</a>
+                <a class="menu_text" href="/profile"> My profile |</a>
+                <a class="menu_text" href="/"> Logout</a>
+                h2 Upload style
+form action="/upload/style" method="POST" enctype="multipart/form-data"
+    input type="file" name="file" 
     textarea name="note" placeholder="Describe your outfit"
     input type="submit" value="Create"

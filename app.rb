@@ -69,15 +69,62 @@ class App < Sinatra::Base
 		end
 	end
 
-
 	post('/upload/style') do
-		db = SQLite3::Database.new('db/match.sqlite')
 
-		user_id = session[:user_id].to_s
-		image = params["image"]
+		db = SQLite3::Database.new('db/match.sqlite')
+		user_id = session[:user_id].to_i
+		image = "./public/img/@filename"
 		text = params["note"]
 
 		db.execute("INSERT INTO styles(user_id, image, text) VALUES (?,?,?)", [user_id, image, text])
+  
+		@filename = params[:file][:filename]
+		file = params[:file][:tempfile]
+	  
+		File.open("./public/img/#{@filename}", 'wb') do |f|
+		  f.write(file.read)
+		end
+		
+		slim(:show_image)
 	end
 
+	get('/profile') do
+
+		db = SQLite3::Database.new('db/match.sqlite')
+		user_id = session[:user_id].to_i
+		begin
+			styles = db.execute('SELECT * FROM styles WHERE user_id = ?', [user_id])
+		rescue SQLite3::ConstraintException # Någon anledning kan skapa notes utan att logga in. fixar bugfix
+			session[:message] = "You are not logged in"
+		end
+		
+		slim(:my_profile, locals:{styles:styles})
+	end
+
+	post '/delete/:id' do
+		db = SQLite3::Database.new("db/match.sqlite")
+		id = params[:id]
+		db.execute("DELETE FROM styles WHERE id=?",id)
+		redirect('/profile')
+	end
+
+	get '/update/:id' do
+		db = SQLite3::Database.new("match.sqlite")
+		id = params[:id]
+		styles = db.execute("SELECT * FROM styles WHERE id=?", id)
+		if styles[0][1].to_i == session[:id].to_i #Om man ändrar på route så kan man inte gå in i andras kontons notes och ändra. så den ger en check om du har tillgång till note innan du kan uppdatera
+			slim(:update, locals:{styles:styles})
+		else
+			session[:message] = "Forbidden"	#Om du inte har tillgång, redirect till error som ger texten "Forbidden"
+			redirect("/error")
+		end
+	end
+
+	post '/update/:id' do
+		db = SQLite3::Database.new("match.sqlite")
+		id = params[:id].to_i
+		new_note = params["content"]
+		db.execute("UPDATE style SET msg=? WHERE id=?", [new_note, id])
+		redirect('/profile')
+	end
 end
