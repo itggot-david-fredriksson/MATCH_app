@@ -73,12 +73,14 @@ class App < Sinatra::Base
 
 		db = SQLite3::Database.new('db/match.sqlite')
 		user_id = session[:user_id].to_i
-		image = "./public/img/@filename"
+		@filename = params[:file][:filename]
+		image = "./img/#{@filename}"
+		puts image
 		text = params["note"]
 
 		db.execute("INSERT INTO styles(user_id, image, text) VALUES (?,?,?)", [user_id, image, text])
   
-		@filename = params[:file][:filename]
+		
 		file = params[:file][:tempfile]
 	  
 		File.open("./public/img/#{@filename}", 'wb') do |f|
@@ -112,12 +114,7 @@ class App < Sinatra::Base
 		db = SQLite3::Database.new("match.sqlite")
 		id = params[:id]
 		styles = db.execute("SELECT * FROM styles WHERE id=?", id)
-		if styles[0][1].to_i == session[:id].to_i #Om man ändrar på route så kan man inte gå in i andras kontons notes och ändra. så den ger en check om du har tillgång till note innan du kan uppdatera
-			slim(:update, locals:{styles:styles})
-		else
-			session[:message] = "Forbidden"	#Om du inte har tillgång, redirect till error som ger texten "Forbidden"
-			redirect("/error")
-		end
+		
 	end
 
 	post '/update/:id' do
