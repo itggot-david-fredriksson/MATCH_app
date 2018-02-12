@@ -1,11 +1,12 @@
 <div class="container">
-        <div class="page">
-            <div class="menu">
-                <a class="menu_text" href="/home">Home |</a>
-                <a class="menu_text" href="/upload"> Upload |</a>
-                <a class="menu_text" href="/profile"> My profile |</a>
-                <a class="menu_text" href="/"> Logout</a>
-                h2 Upload style
+    <div class="page">
+        <div class="menu">
+            a class="menu_text" href="/home" Home |  
+            a class="menu_text" href="/upload" Upload |  
+            a class="menu_text" href="/profile" My profile  
+            form class="logout" method="POST" action="/logout"
+                input type="submit" value="Sign out"
+            h2 Upload style
 form action="/upload/style" method="POST" enctype="multipart/form-data"
     input type="file" name="file" 
     textarea name="note" placeholder="Describe your outfit"

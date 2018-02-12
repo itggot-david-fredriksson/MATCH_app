@@ -1,10 +1,11 @@
 <div class="menu">
     <a class="menu_text" href="/home">Home |</a>
     <a class="menu_text" href="/upload"> Upload |</a>
-    <a class="menu_text" href="/profile"> My profile |</a>
-    <a class="menu_text" href="/"> Logout</a>
-    body
-        h2 Style uploaded!
-        img src="../img/#{@filename}"
-    p
-        a href="/home" Go back
+    <a class="menu_text" href="/profile"> My profile </a>
+    form class="logout" method="POST" action="/logout"
+        input type="submit" value="Sign out"
+body
+    h2 Style uploaded!
+    img src="../img/#{@filename}"
+p
+    a href="/home" Go back

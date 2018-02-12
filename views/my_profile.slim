@@ -1,13 +1,14 @@
 <div class="menu">
     <a class="menu_text" href="/home">Home |</a>
     <a class="menu_text" href="/upload"> Upload |</a>
-    <a class="menu_text" href="/profile"> My profile |</a>
-    <a class="menu_text" href="/"> Logout</a>
-    h2 My profile
-    - styles.each do |styles|
-        div class="block"
-            img src=".#{styles[2]}"
-            p #{styles[3]}
-            form method="POST" action="/delete/#{styles[0]}"
-                input type="submit" value="Delete style"
-        a href="/update/#{styles[0]}" Edit style
+    <a class="menu_text" href="/profile"> My profile   </a>
+    form class="logout" method="POST" action="/logout"
+        input type="submit" value="Sign out"
+h2 My profile
+- styles.each do |styles|
+    div class="block"
+        img src="#{styles[2]}"
+        p #{styles[3]}
+        form method="POST" action="/delete/#{styles[0]}"
+            input type="submit" value="Delete style"
+    a href="/update/#{styles[0]}" Edit style
